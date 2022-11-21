@@ -76,3 +76,15 @@ module.exports = {
   ],
 }
 ```
+
+## Using News API
+
+1. [News API](https://newsapi.org/account)
+2. Using `API_KEY` in `src/environments/environment.ts` and `src/environments/environment.prod.ts`.
+```
+export const environment = {
+  production: false,
+  news_api_key: "API_KEY"
+};
+```
+3. 
