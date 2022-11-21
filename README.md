@@ -53,9 +53,26 @@ module.exports = {
 }
 ```
 
-3. Add the @tailwind directives for each of Tailwind’s layers to your ./src/styles.css file.
+3. Add the @tailwind directives for each of Tailwind's layers to your ./src/styles.css file.
 ```
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
+
+## Install DaisyUI 
+
+1. Install
+```
+npm i daisyui
+```
+
+2. tailwind.config.js
+```
+module.exports = {
+  //...
+  plugins: [
+    require("daisyui"),
+  ],
+}
 ```
