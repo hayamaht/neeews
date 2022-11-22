@@ -27,7 +27,27 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 
-# Step
+# Pre-Step
+
+Before building the application: 
+
+## Change the `tsconfig.json`
+1. Make change:
+```json
+{
+  //...
+  "compilerOptions": {
+    //...
+    "paths": {
+      "~app": ["src/app/*"],
+      "~env": ["src/environments/*"]
+    }
+  }
+  //...
+}
+```
+2. Restart the VS Code.
+
 
 ## Tailwind CSS for Angular
 
