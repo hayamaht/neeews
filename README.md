@@ -60,7 +60,7 @@ npx tailwindcss init
 ```
 
 2. tailwind.config.js
-```
+```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -74,7 +74,7 @@ module.exports = {
 ```
 
 3. Add the @tailwind directives for each of Tailwind's layers to your ./src/styles.css file.
-```
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -88,7 +88,7 @@ npm i daisyui
 ```
 
 2. tailwind.config.js
-```
+```typescript
 module.exports = {
   //...
   plugins: [
@@ -107,4 +107,89 @@ export const environment = {
   news_api_key: "API_KEY"
 };
 ```
-3. 
+3. Generate the interceptor to attach `API_KEY` to a request via the `Authorization` HTTP header. The `src/app/new-api.interceptor.ts`:
+```typescript
+import { Injectable } from '@angular/core';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+  import { environment } from '~env/environment';
+
+@Injectable()
+export class NewsApiInterceptor implements HttpInterceptor {
+
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    const headers = {
+      'Authorization': `${environment.news_api_key}`,
+      'X-Api-Key': `${environment.news_api_key}`
+    }
+
+    const req = request.clone({ setHeaders: headers });
+    return next.handle(req);
+  }
+}
+```
+
+4. Change the file: `src/app/app.modele.ts`
+```typescript
+//...
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+//...
+@NgModule({
+  // ...
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: NewsApiInterceptor, multi: true }
+  ],
+  // ...
+})
+```
+
+5. Create Service `src/app/services/news-api.service.ts`
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NewsApiService {
+
+  private api = "https://newsapi.org/v2";
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  topHeadlines() {
+    // top-headlines?country=tw
+    const country = 'tw'
+    const url = `${this.api}/top-headlines?country=${country}`
+    return this.http.get(url);
+  }
+}
+```
+
+6. Change file `src/app/app.module.ts`:
+```typescript
+//...
+import { HttpClientModule } from '@angular/common/http';
+//...
+
+@NgModule({
+  //...
+  imports: [
+    //...
+    HttpClientModule,
+  ],
+  //...
+})
+```
+
+7. Can try to call News API in the `src/app/app.component.ts`
