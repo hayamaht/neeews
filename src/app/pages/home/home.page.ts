@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Article } from '~app/models/article';
 import { NewsApiService } from '~app/serivces/news-api.service';
 
@@ -29,7 +28,7 @@ export class HomePage implements OnInit {
             this.articles = res.articles;
           });
       } else {
-        //this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/');
       }
     });
   }
