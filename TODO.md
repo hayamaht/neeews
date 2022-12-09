@@ -1,4 +1,5 @@
-* Top Headline
-* Pagination
-* Loadig progress bar
-* Lazy loading image
+- [X] Top Headline
+- [ ] Image can not load
+- [ ] Pagination
+- [ ] Loadig progress bar
+- [ ] Lazy loading image

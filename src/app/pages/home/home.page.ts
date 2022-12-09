@@ -11,6 +11,7 @@ import { NewsApiService } from '~app/serivces/news-api.service';
 export class HomePage implements OnInit {
 
   articles: Article[] | undefined;
+  isSearch = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -22,13 +23,20 @@ export class HomePage implements OnInit {
     // TODO: Usig rxjs
     this.activatedRoute.params.subscribe(params => {
       if (params['searchTerm']) {
+        this.isSearch = true;
         this.newsApiService
           .search(params['searchTerm'])
           .subscribe(res => {
             this.articles = res.articles;
           });
       } else {
-        this.router.navigateByUrl('/');
+        //this.router.navigateByUrl('/');
+        this.isSearch = false;
+        this.newsApiService
+          .topHeadlines()
+          .subscribe(res => {
+            this.articles = res.articles;
+          });
       }
     });
   }
