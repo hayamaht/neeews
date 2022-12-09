@@ -24,6 +24,11 @@ import { Article } from '~app/models/article';
             {{ article.title }}
           </h5>
         </a>
+        <a href="#" class="block">
+          <div class="badge badge-accent badge-outline">
+            {{ article.source['name'] }}
+          </div>
+        </a>
         <!-- <p class="font-mono font-thin text-sm mb-4">{{ article.author }}</p> -->
         <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> -->
         <a [href]="article.url" target="_blank"
