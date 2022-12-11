@@ -8,13 +8,15 @@ import { NewsApiInterceptor } from '~app/new-api.interceptor';
 import { SearchComponent } from '~app/components/search/search.component';
 import { ArticleComponent } from '~app/components/article/article.component';
 import { HomePage } from '~app/pages/home/home.page';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     ArticleComponent,
-    HomePage
+    HomePage,
+    NavComponent
   ],
   imports: [
     BrowserModule,
