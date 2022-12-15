@@ -5,10 +5,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from '~app/app-routing.module';
 import { AppComponent } from '~app/app.component';
 import { NewsApiInterceptor } from '~app/new-api.interceptor';
+import { HomePage } from '~app/pages/home/home.page';
+import { TopHeadlinesPage } from '~app/pages/top-headlines/top-headlines.page';
 import { SearchComponent } from '~app/components/search/search.component';
 import { ArticleComponent } from '~app/components/article/article.component';
-import { HomePage } from '~app/pages/home/home.page';
-import { NavComponent } from './components/nav/nav.component';
+import { NavComponent } from '~app/components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavComponent } from './components/nav/nav.component';
     SearchComponent,
     ArticleComponent,
     HomePage,
-    NavComponent
+    NavComponent,
+    TopHeadlinesPage,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,26 @@
+<div >
+  <h1 class="text-2xl text-center font-black my-4">
+    Top Headlines
+  </h1>
+
+  <div class="tabs justify-center" >
+    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/general" routerLinkActive="tab-active">General</a>
+    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/business" routerLinkActive="tab-active">Business</a>
+    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/entertainment" routerLinkActive="tab-active">Entertainment</a>
+    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/health" routerLinkActive="tab-active">Health</a>
+    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/science" routerLinkActive="tab-active">Science</a>
+    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/sports" routerLinkActive="tab-active">Sports</a>
+    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/technology" routerLinkActive="tab-active">Technology</a>
+  </div>
+
+  <div class="
+    m-4 inline-grid gap-2
+    md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+  ">
+    <app-article
+      *ngFor="let article of articles"
+      [article]="article"
+    ></app-article>
+
+  </div>
+</div>

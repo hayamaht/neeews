@@ -33,7 +33,7 @@ export class HomePage implements OnInit {
         //this.router.navigateByUrl('/');
         this.isSearch = false;
         this.newsApiService
-          .topHeadlines()
+          .topHeadlines('tw')
           .subscribe(res => {
             this.articles = res.articles;
           });

@@ -33,7 +33,7 @@ import { Article } from '~app/models/article';
           {{ article.publishedAt | date:'yyyy-MM-dd HH:mm:ss' }}
         </p>
         <a [href]="article.url" target="_blank">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight hover:underline">
+          <h5 class="mb-2 text-xl font-bold tracking-tight hover:underline">
             {{ article.title }}
           </h5>
         </a>

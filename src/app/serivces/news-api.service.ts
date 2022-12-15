@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NewsResponse } from '~app/models/news-response';
+import { Categories } from '~app/models/categories';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,28 @@ export class NewsApiService {
     private http: HttpClient
   ) { }
 
-  topHeadlines(): Observable<NewsResponse> {
-    // top-headlines?country=tw
-    const country = 'tw'
-    const url = `${this.api}/top-headlines?country=${country}`
+  topHeadlines(
+    country: string = 'tw',
+    category: Categories = Categories.NONE,
+    q?: string,
+    pageSize: number = 20,
+    page: number = 1,
+  ): Observable<NewsResponse> {
+    const t = `${this.api}/top-headlines`;
+    const c = `?country=${country}`;
+    const ct = (category !== Categories.NONE)
+      ? `&category=${category}`
+      : '';
+    const qt = (q !== undefined && q !== '')
+      ? `&q=${q}`
+      : '';
+    const ps = `&pageSize=${pageSize}`;
+    const p = `&page=${page}`;
+
+    const url = t + c + ct + qt + ps + p;
+
+    console.log(url);
+
     return this.http.get<NewsResponse>(url);
   }
 
