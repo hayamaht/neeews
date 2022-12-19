@@ -33,10 +33,35 @@
 
   </div>
 
-  <div class="btn-group w-full my-4 justify-center">
-    <pagination-controls
-      (pageChange)="getPage($event)"
-    ></pagination-controls>
+  <div *ngIf="!loading" class="btn-group w-full my-4 justify-center">
+    <pagination-template #p="paginationApi"
+      (pageChange)="getPage($event)">
+
+      <div class="btn-group">
+        <button type="button" class="btn"
+          [class.disabled]="p.isFirstPage()"
+          *ngIf="!p.isFirstPage()"
+          (click)="p.previous()"
+        >
+          &lt;
+        </button>
+        <button type="button"
+          *ngFor="let page of p.pages"
+          (click)="p.setCurrent(page.value)"
+          class="btn"
+          [class.btn-active]="p.getCurrent() === page.value">
+          {{ page.label }}
+        </button>
+        <button type="button" class="btn"
+          [class.disabled]="p.isLastPage()"
+          *ngIf="!p.isLastPage()"
+          (click)="p.next()"
+        >
+          &gt;
+        </button>
+      </div>
+
+    </pagination-template>
   </div>
 
 </div>

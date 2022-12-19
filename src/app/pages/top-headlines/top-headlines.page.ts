@@ -16,6 +16,7 @@ export class TopHeadlinesPage implements OnInit {
   total!: number;
   page = 1;
   perPage = 20;
+  loading = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,6 +26,7 @@ export class TopHeadlinesPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     const c = this.activatedRoute.snapshot.params['category'];
     if (!c) {
       this.router.navigateByUrl('/top-headlines/general');
@@ -41,12 +43,14 @@ export class TopHeadlinesPage implements OnInit {
   }
 
   getArticles(res: NewsResponse) {
+    this.loading = false;
     this.spinner.hide();
     this.total = res.totalResults;
     this.articles = res.articles;
   }
 
   getNews(params: {[key: string]: string}) {
+    this.loading = true;
     this.spinner.show();
     this.newsApiService
       .topHeadlines(params)
