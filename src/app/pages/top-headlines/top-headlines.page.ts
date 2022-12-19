@@ -50,6 +50,11 @@ export class TopHeadlinesPage implements OnInit {
   }
 
   getPage(page: number) {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
     this.page = page;
     this.getNews({
       'page': page.toString()
