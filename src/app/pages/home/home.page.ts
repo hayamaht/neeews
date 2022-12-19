@@ -20,25 +20,7 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // TODO: Usig rxjs
-    this.activatedRoute.params.subscribe(params => {
-      if (params['searchTerm']) {
-        this.isSearch = true;
-        this.newsApiService
-          .search(params['searchTerm'])
-          .subscribe(res => {
-            this.articles = res.articles;
-          });
-      } else {
-        //this.router.navigateByUrl('/');
-        this.isSearch = false;
-        this.newsApiService
-          .topHeadlines('tw')
-          .subscribe(res => {
-            this.articles = res.articles;
-          });
-      }
-    });
+
   }
 
 }

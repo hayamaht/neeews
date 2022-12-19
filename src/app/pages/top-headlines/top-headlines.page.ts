@@ -1,7 +1,7 @@
-import { Categories } from '~app/models/categories';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Article } from '~app/models/article';
+import { NewsResponse } from '~app/models/news-response';
 import { NewsApiService } from '~app/serivces/news-api.service';
 
 @Component({
@@ -12,6 +12,9 @@ import { NewsApiService } from '~app/serivces/news-api.service';
 export class TopHeadlinesPage implements OnInit {
 
   articles!: Article[];
+  total!: number;
+  page = 1;
+  perPage = 20;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,30 +23,37 @@ export class TopHeadlinesPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // TODO: Re-write this
+    const c = this.activatedRoute.snapshot.params['category'];
+    if (!c) {
+      this.router.navigateByUrl('/top-headlines/general');
+      return;
+    }
+
     this.activatedRoute.params.subscribe(p => {
-      let c;
-      if (p['category'] === Categories.BUSINESS ||
-        p['category'] === Categories.ENTERTAINMENT ||
-        p['category'] === Categories.GENERAL ||
-        p['category'] === Categories.HEALTH ||
-        p['category'] === Categories.SCIENCE ||
-        p['category'] === Categories.SPORTS ||
-        p['category'] === Categories.TECHNOLOGY
-      ) {
-        c = p['category'];
-      } else {
-        this.router.navigateByUrl('/top-headlines/general');
-      }
-
-      this.newsApiService
-        .topHeadlines('tw', c)
-        .subscribe(res => {
-          this.articles = res.articles
-        });
+      this.getNews({
+        'country': 'tw',
+        'category': p['category'],
+        'page': '1'
+      });
     });
+  }
 
+  getArticles(res: NewsResponse) {
+    this.total = res.totalResults;
+    this.articles = res.articles;
+  }
 
+  getNews(params: {[key: string]: string}) {
+    this.newsApiService
+      .topHeadlines(params)
+      .subscribe(res => this.getArticles(res));
+  }
+
+  getPage(page: number) {
+    this.page = page;
+    this.getNews({
+      'page': page.toString()
+    });
   }
 
 }

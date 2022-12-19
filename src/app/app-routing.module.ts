@@ -4,9 +4,7 @@ import { HomePage } from '~app/pages/home/home.page';
 import { TopHeadlinesPage } from '~app/pages/top-headlines/top-headlines.page';
 
 const routes: Routes = [{
-  path: '', component: HomePage
-}, {
-  path: 'top-headlines', component: TopHeadlinesPage
+  path: 'top-headlines', component: TopHeadlinesPage,
 }, {
   path: 'top-headlines/:category', component: TopHeadlinesPage
 }, {
