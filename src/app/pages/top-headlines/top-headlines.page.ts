@@ -1,5 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Article } from '~app/models/article';
 import { NewsResponse } from '~app/models/news-response';
 import { NewsApiService } from '~app/serivces/news-api.service';
@@ -20,6 +21,7 @@ export class TopHeadlinesPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private newsApiService: NewsApiService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -39,11 +41,13 @@ export class TopHeadlinesPage implements OnInit {
   }
 
   getArticles(res: NewsResponse) {
+    this.spinner.hide();
     this.total = res.totalResults;
     this.articles = res.articles;
   }
 
   getNews(params: {[key: string]: string}) {
+    this.spinner.show();
     this.newsApiService
       .topHeadlines(params)
       .subscribe(res => this.getArticles(res));

@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from '~app/app-routing.module';
@@ -12,6 +12,7 @@ import { TopHeadlinesPage } from '~app/pages/top-headlines/top-headlines.page';
 import { SearchComponent } from '~app/components/search/search.component';
 import { ArticleComponent } from '~app/components/article/article.component';
 import { NavComponent } from '~app/components/nav/nav.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -24,10 +25,13 @@ import { NavComponent } from '~app/components/nav/nav.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    NgxSpinnerModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: NewsApiInterceptor, multi: true }
   ],
