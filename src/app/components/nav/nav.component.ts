@@ -1,43 +1,18 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Categories } from '~app/models/categories';
-import { NewsApiService } from '~app/serivces/news-api.service';
+import { getBrowserLocales, getCountryByLocale } from '~app/shared/countries-locale-map';
 
 @Component({
   selector: 'app-nav',
   template: `
     <div class="navbar">
       <div class="navbar-start">
-        <!-- <div class="dropdown dropdown-bottom">
-          <label tabindex="0" class="btn btn-ghost btn-circle">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
-            </svg>
-          </label>
-          <ul class="
-            menu menu-compact dropdown-content
-            w-52 bg-base-100
-            shadow rounded
-            outline outline-1 outline-gray-300
-          ">
-            <li>
-              <button
-                (click)="setCategory(Categories.BUSINESS)">
-                Busines
-              </button>
-            </li>
-            <li>
-              <button
-                (click)="setCategory(Categories.ENTERTAINMENT)">
-                Entertainment
-              </button>
-            </li>
-            <li><button (click)="setCategory(Categories.GENERAL)">General</button></li>
-            <li><button (click)="setCategory(Categories.HEALTH)">Health</button></li>
-            <li><button (click)="setCategory(Categories.SCIENCE)">Science</button></li>
-            <li><button (click)="setCategory(Categories.SPORTS)">Sports</button></li>
-            <li><button (click)="setCategory(Categories.TECHNOLOGY)">Technology</button></li>
-          </ul>
-        </div> -->
+        <img src="assets/flags/1x1/{{country}}.svg"
+          class="
+            w-7 h-7 rounded-full
+            outline outline-2 outline-offset-2
+            outline-secondary
+          "
+          alt="">
       </div>
       <div class="navbar-center">
         <a routerLink="/">
@@ -73,9 +48,16 @@ import { NewsApiService } from '~app/serivces/news-api.service';
 })
 export class NavComponent implements OnInit {
 
+  country = 'us';
+
   constructor() { }
 
   ngOnInit(): void {
+    const locales = getBrowserLocales();
+    const defaultLocale = locales[0];
+    const country = getCountryByLocale(defaultLocale);
+
+    this.country = country;
   }
 
 }
