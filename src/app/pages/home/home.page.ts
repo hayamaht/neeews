@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from '~app/models/article';
-import { NewsApiService } from '~app/serivces/news-api.service';
+import { NewsApiService } from '~app/services/news-api.service';
 
 @Component({
   selector: 'app-home',

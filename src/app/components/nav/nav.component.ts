@@ -1,14 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { getCountryNameByAlpha2 } from 'country-locale-map';
-import { CountryCodes } from '~app/models/country-codes';
-import { getBrowserLocales, getCountryByLocale } from '~app/shared/countries-locale-map';
+import { Component, OnInit } from '@angular/core';
+import { CountryNewsService } from '~app/services/country-news.service';
 
 @Component({
   selector: 'app-nav',
   template: `
     <div class="navbar">
       <div class="navbar-start">
-        <img src="assets/flags/1x1/{{country}}.svg"
+        <img src="assets/flags/1x1/{{currentCountry}}.svg"
           class="
             w-8 h-8 rounded-full m-2
             outline outline-2 outline-offset-2
@@ -48,7 +46,7 @@ import { getBrowserLocales, getCountryByLocale } from '~app/shared/countries-loc
             outline outline-1 outline-gray-300
           ">
             <li *ngFor="let c of avaliableCountries">
-              <a href="">{{ c }}</a>
+              <button (click)="changeCountryCode(c.code)">{{ c.name }}</button>
             </li>
           </ul>
         </div>
@@ -58,29 +56,21 @@ import { getBrowserLocales, getCountryByLocale } from '~app/shared/countries-loc
 })
 export class NavComponent implements OnInit {
 
-  // Default is United States of America
-  country = 'us';
+  currentCountry = '';
+  avaliableCountries!: {name: string, code: string}[];
 
-  avaliableCountries: string[] = [];
-
-  countryCodes: Array<string> = Object.keys(CountryCodes)
-    .filter(k => isNaN(+k));
-
-  constructor() { }
+  constructor(
+    private countryNewsService: CountryNewsService
+  ) { }
 
   ngOnInit(): void {
-    const locales = getBrowserLocales();
-    const defaultLocale = locales[0];
-    const country = getCountryByLocale(defaultLocale);
-
-    this.country = country;
-    this.getAvaliableCountries();
+    this.currentCountry = this.countryNewsService.getCountryCode();
+    this.avaliableCountries = this.countryNewsService.getAvaliableCountryNames();
   }
 
-  getAvaliableCountries() {
-    this.avaliableCountries = this.countryCodes
-      .map(cc => getCountryNameByAlpha2(cc)!)
-      .filter(c => c !== undefined);
+  changeCountryCode(code: string) {
+    this.currentCountry = code;
+    this.countryNewsService.changeCountryCode(code);
   }
 
 }

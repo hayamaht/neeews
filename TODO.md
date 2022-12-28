@@ -1,5 +1,10 @@
 - [X] Top Headline
 - [X] Image can not load
-- [ ] Pagination
-- [ ] Loadig progress bar
+- [X] Pagination
+- [X] Loadig progress bar
 - [ ] Lazy loading image
+- [ ] Load Country Flag
+- [ ] Click on the country name to change the news
+- [ ] Scroll the country list
+- [ ] Show pages on the category list
+- [ ] Using RxJS on the category list

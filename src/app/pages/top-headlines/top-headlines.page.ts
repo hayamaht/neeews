@@ -1,9 +1,11 @@
+import { CountryNewsService } from '~app/services/country-news.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component, OnChanges, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Article } from '~app/models/article';
 import { NewsResponse } from '~app/models/news-response';
-import { NewsApiService } from '~app/serivces/news-api.service';
+import { NewsApiService } from '~app/services/news-api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-top-headlines',
@@ -17,25 +19,37 @@ export class TopHeadlinesPage implements OnInit {
   page = 1;
   perPage = 20;
   loading = true;
+  //countrySubscrition!: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private newsApiService: NewsApiService,
-    private spinner: NgxSpinnerService
+    private countryNewsService: CountryNewsService,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {
     this.spinner.show();
-    const c = this.activatedRoute.snapshot.params['category'];
-    if (!c) {
+    const cat = this.activatedRoute.snapshot.params['category'];
+    if (!cat) {
       this.router.navigateByUrl('/top-headlines/general');
       return;
     }
 
-    this.activatedRoute.params.subscribe(p => {
+    this.countryNewsService.countryCode$.subscribe(code => {
+      this.page = 1;
       this.getNews({
-        'country': 'tw',
+        'country': code,
+        'category': cat,
+        'page': '1'
+      });
+    });
+
+    this.activatedRoute.params.subscribe(p => {
+      this.page = 1;
+      this.getNews({
+        'country': this.countryNewsService.currentCountryCode,
         'category': p['category'],
         'page': '1'
       });

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { NewsResponse } from '~app/models/news-response';
 import { Categories } from '~app/models/categories';
 import { UrlParams } from '~app/shared/url-params';
@@ -14,9 +14,27 @@ export class NewsApiService {
   private _urlTopHeadlines = `${this._api}/top-headlines?`;
   private _curUrlTopHeadlines = '';
 
+  private countrySource = new Subject<string>();
+
+  country$ = this.countrySource.asObservable();
+
   constructor(
     private http: HttpClient
   ) { }
+
+  changeCountry(countryCode: string | undefined) {
+    console.log(countryCode);
+    if (countryCode === undefined) {
+      countryCode = 'us';
+    }
+
+    countryCode = countryCode.toLowerCase();
+
+    // return this.topHeadlines({
+    //   'country': countryCode
+    // });
+    this.countrySource.next(countryCode);
+  }
 
   topHeadlines(
     params: {[key: string]: string}

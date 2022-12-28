@@ -38,13 +38,14 @@ export function getBrowserLocales(options = {}) {
  * @param locale The ISO 639 Language Code
  * @returns The ISO 3166 Country Code
  */
-export function getCountryByLocale(locale: string): string {
-  locale = locale.replace('-', '_');
+export function getCountryCodeByLocale(locale: string): string {
+  locale = locale.replace('-', '_').toLowerCase();
   const countriess = getAllCountries();
   let cs = countriess
     .map(c => {
-      const co = c.default_locale.substring(c.default_locale.length - 2);
-      const la = c.default_locale.substring(0, 2);
+      const dd = c.default_locale.toLowerCase();
+      const co = dd.substring(c.default_locale.length - 2);
+      const la = dd.substring(0, 2);
       if (co !== la && (
         locale === c.default_locale ||
         locale === la ||
@@ -60,5 +61,6 @@ export function getCountryByLocale(locale: string): string {
   if (cs.length === 0) {
     cs = ['us'];
   }
+
   return cs[0].toLowerCase();
 }
