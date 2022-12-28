@@ -10,11 +10,17 @@ import { Article } from '~app/models/article';
     ">
 
       <ng-container *ngIf="article.urlToImage; else elseTemplate">
-        <img
-          [src]="article.urlToImage"
-          [alt]="article.title"
-          class="rounded-t-lg"
-        />
+        <div class="
+        bg-gray-200 rounded-t-lg w-full
+          flex items-center justify-center
+        ">
+          <img
+            [src]="article.urlToImage"
+            [alt]="article.title"
+            (error)="errorImage($event)"
+            class="rounded-t-lg"
+          />
+        </div>
       </ng-container>
       <ng-template #elseTemplate>
         <div class="h-56 bg-gray-300 rounded-t-lg flex justify-center items-center ">
@@ -63,4 +69,15 @@ import { Article } from '~app/models/article';
 export class ArticleComponent  {
   @Input()
   article!: Article;
+
+  errorImage(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.src = this.loadNotFoundImage();
+    img.style.height = 'fit-content';
+    img.parentElement!.style.height = '200px';
+  }
+
+  loadNotFoundImage(): string {
+    return 'assets/eye-x-lined-64.png'
+  }
 }
