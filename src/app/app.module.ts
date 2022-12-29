@@ -1,4 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -14,6 +15,8 @@ import { TopHeadlinesPage } from '~app/pages/top-headlines/top-headlines.page';
 import { SearchComponent } from '~app/components/search/search.component';
 import { ArticleComponent } from '~app/components/article/article.component';
 import { NavComponent } from '~app/components/nav/nav.component';
+import { FilterPipe } from '~app/shared/filter.pipe';
+import { HighlightDirective } from '~app/shared/highlight.directive';
 
 
 @NgModule({
@@ -24,10 +27,13 @@ import { NavComponent } from '~app/components/nav/nav.component';
     NavComponent,
     HomePage,
     TopHeadlinesPage,
+    FilterPipe,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
