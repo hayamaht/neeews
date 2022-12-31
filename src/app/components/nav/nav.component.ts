@@ -57,9 +57,9 @@ import { CountryNewsService } from '~app/services/country-news.service';
                 placeholder="Enter country name"
                 tabindex="0"
                 autofocus
-                class="hidden max-w-xs
+                class="max-w-xs
                   input input-bordered input-sm
-                  sm:inline-flex
+                  inline-flex
               ">
             </div>
 
