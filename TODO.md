@@ -9,6 +9,6 @@
 - [X] Using RxJS on the category list
 - [X] Country Menu 
 - [X] Close country menu
-- [ ] Lazy loading image
+- [X] Lazy loading image
 - [ ] Go to top button
 - [ ] Using [ngx-translage](http://www.ngx-translate.com/)

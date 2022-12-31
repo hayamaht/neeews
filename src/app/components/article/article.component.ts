@@ -15,10 +15,11 @@ import { Article } from '~app/models/article';
           flex items-center justify-center
         ">
           <img
-            [src]="article.urlToImage"
+            data-src="{{ article.urlToImage }}"
+            data-sizes="auto"
             [alt]="article.title"
             (error)="errorImage($event)"
-            class="rounded-t-lg"
+            class="rounded-t-lg lazyload"
           />
         </div>
       </ng-container>
