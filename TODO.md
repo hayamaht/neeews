@@ -10,5 +10,5 @@
 - [X] Country Menu 
 - [X] Close country menu
 - [X] Lazy loading image
-- [ ] Go to top button
+- [X] Go to top button
 - [ ] Using [ngx-translage](http://www.ngx-translate.com/)

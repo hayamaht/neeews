@@ -19,7 +19,6 @@ export class TopHeadlinesPage implements OnInit {
   page = 1;
   perPage = 20;
   loading = true;
-  //countrySubscrition!: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -56,6 +55,14 @@ export class TopHeadlinesPage implements OnInit {
     });
   }
 
+  gotoTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
   getArticles(res: NewsResponse) {
     this.loading = false;
     this.spinner.hide();
@@ -66,17 +73,13 @@ export class TopHeadlinesPage implements OnInit {
   getNews(params: {[key: string]: string}) {
     this.loading = true;
     this.spinner.show();
+    this.gotoTop();
     this.newsApiService
       .topHeadlines(params)
       .subscribe(res => this.getArticles(res));
   }
 
   getPage(page: number) {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
     this.page = page;
     this.getNews({
       'page': page.toString()
