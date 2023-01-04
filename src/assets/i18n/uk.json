@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Головні заголовки",
+  "CATEGORY": {
+    "GENERAL": "Загальний",
+    "BUSINESS": "Бізнес",
+    "ENTERTAINMENT": "Розваги",
+    "HEALTH": "Здоров'я",
+    "SCIENCE": "Наука",
+    "SPORTS": "спорт",
+    "TECHNOLOGY": "технології"
+  }
+}

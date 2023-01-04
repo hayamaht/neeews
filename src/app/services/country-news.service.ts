@@ -1,6 +1,7 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { getCountryNameByAlpha2 } from 'country-locale-map';
+import { getCountryByAlpha2, getCountryNameByAlpha2, getLocaleByAlpha2 } from 'country-locale-map';
 import { CountryCodes } from '~app/models/country-codes';
 import { getBrowserLocales, getCountryCodeByLocale } from '~app/shared/countries-locale-map';
 
@@ -27,7 +28,9 @@ export class CountryNewsService {
     })
     .filter(c => c !== undefined);
 
-  constructor() { }
+  constructor(
+    private translage: TranslateService
+  ) { }
 
   get localCode() {
     return localStorage.getItem('country_code') || '';
@@ -43,13 +46,13 @@ export class CountryNewsService {
       const defaultLocale = getBrowserLocales()[0];
       const code = getCountryCodeByLocale(defaultLocale);
       this.localCode = code;
-      this.currentCountryCode = code;
-      this.countryCodeSource.next(code);
+      this.setCode(code);
+      this.setLocaleByCode(code);
       return code;
     }
 
-    this.currentCountryCode = lsConuntryCode;
-    this.countryCodeSource.next(lsConuntryCode);
+    this.setCode(lsConuntryCode);
+    this.setLocaleByCode(lsConuntryCode);
     return lsConuntryCode;
   }
 
@@ -65,12 +68,29 @@ export class CountryNewsService {
 
   changeCountryCode(code: string) {
     if (!this.checkAvaliableCountryCodes(code)) return;
-    this.currentCountryCode = code;
     this.localCode = code;
-    this.countryCodeSource.next(code);
+    this.setCode(code);
+    this.setLocaleByCode(code);
   }
 
   getAvaliableCountryNames() {
     return this.avaliableCountryNames;
+  }
+
+  private setLocaleByCode(code: string) {
+    const locale = getLocaleByAlpha2(code.toUpperCase()) || 'en';
+    const lc = code === 'tw' ||
+      code === 'cn' ||
+      code === 'hk' ||
+      code === 'ma' ||
+      code === 'sa'
+      ? locale
+      : locale.substring(0, 2);
+    this.translage.use(lc);
+  }
+
+  private setCode(code: string) {
+    this.currentCountryCode = code;
+    this.countryCodeSource.next(code);
   }
 }

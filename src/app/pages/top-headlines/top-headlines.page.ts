@@ -1,11 +1,11 @@
-import { CountryNewsService } from '~app/services/country-news.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AfterContentChecked, AfterViewChecked, Component, OnChanges, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Article } from '~app/models/article';
 import { NewsResponse } from '~app/models/news-response';
 import { NewsApiService } from '~app/services/news-api.service';
-import { Subscription } from 'rxjs';
+import { CountryNewsService } from '~app/services/country-news.service';
+
 
 @Component({
   selector: 'app-top-headlines',
@@ -29,6 +29,7 @@ export class TopHeadlinesPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.spinner.show();
     const cat = this.activatedRoute.snapshot.params['category'];
     if (!cat) {

@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "トップの見出し",
+  "CATEGORY": {
+    "GENERAL": "全般",
+    "BUSINESS": "ビジネス",
+    "ENTERTAINMENT": "エンターテイメント",
+    "HEALTH": "ヘルス",
+    "SCIENCE": "サイエンス",
+    "SPORTS": "スポーツ",
+    "TECHNOLOGY": "テクノロジー"
+  }
+}

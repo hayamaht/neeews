@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Toppoverskrifter",
+  "CATEGORY": {
+    "GENERAL": "Generell",
+    "BUSINESS": "Virksomhet",
+    "ENTERTAINMENT": "Underholdning",
+    "HEALTH": "Helse",
+    "SCIENCE": "Vitenskap",
+    "SPORTS": "Sport",
+    "TECHNOLOGY": "Teknologi"
+  }
+}

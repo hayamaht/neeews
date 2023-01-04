@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "พาดหัวข่าวยอดนิยม",
+  "CATEGORY": {
+    "GENERAL": "ทั่วไป",
+    "BUSINESS": "ธุรกิจ",
+    "ENTERTAINMENT": "ความบันเทิง",
+    "HEALTH": "สุขภาพ",
+    "SCIENCE": "ศาสตร์",
+    "SPORTS": "กีฬา",
+    "TECHNOLOGY": "เทคโนโลยี"
+  }
+}

@@ -1,9 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
@@ -17,7 +18,11 @@ import { ArticleComponent } from '~app/components/article/article.component';
 import { NavComponent } from '~app/components/nav/nav.component';
 import { FilterPipe } from '~app/shared/filter.pipe';
 import { HighlightDirective } from '~app/shared/highlight.directive';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -38,6 +43,14 @@ import { HighlightDirective } from '~app/shared/highlight.directive';
     HttpClientModule,
     NgxPaginationModule,
     NgxSpinnerModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      }
+    }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
