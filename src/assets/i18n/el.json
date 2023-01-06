@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Κορυφαίοι τίτλοι",
+  "CATEGORY": {
+    "GENERAL": "Γενικός",
+    "BUSINESS": "Επιχείρηση",
+    "ENTERTAINMENT": "Ψυχαγωγία",
+    "HEALTH": "Υγεία",
+    "SCIENCE": "Επιστήμη",
+    "SPORTS": "Αθλητισμός",
+    "TECHNOLOGY": "Τεχνολογία"
+  }
+}

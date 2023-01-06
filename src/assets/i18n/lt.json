@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Populiariausios antraštės",
+  "CATEGORY": {
+    "GENERAL": "Generolas",
+    "BUSINESS": "Verslas",
+    "ENTERTAINMENT": "Pramogos",
+    "HEALTH": "Sveikata",
+    "SCIENCE": "Mokslas",
+    "SPORTS": "Sportas",
+    "TECHNOLOGY": "Technologijos"
+  }
+}

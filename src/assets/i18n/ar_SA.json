@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Top Headlines",
+  "CATEGORY": {
+    "GENERAL": "General",
+    "BUSINESS": "Business",
+    "ENTERTAINMENT": "Entertainment",
+    "HEALTH": "Health",
+    "SCIENCE": "Science",
+    "SPORTS": "Sports",
+    "TECHNOLOGY": "Technology"
+  }
+}

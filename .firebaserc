@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "neeews-b6e5a": {
+      "hosting": {
+        "newsweb": [
+          "neeews-b6e5a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "neeews-b6e5a"
+  }
+}

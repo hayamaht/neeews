@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Berita Utama Teratas",
+  "CATEGORY": {
+    "GENERAL": "Umum",
+    "BUSINESS": "Bisnis",
+    "ENTERTAINMENT": "Hiburan",
+    "HEALTH": "Kesehatan",
+    "SCIENCE": "Sains",
+    "SPORTS": "Olahraga",
+    "TECHNOLOGY": "Teknologi"
+  }
+}

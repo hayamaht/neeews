@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Топ наслови",
+  "CATEGORY": {
+    "GENERAL": "Генерал",
+    "BUSINESS": "Посао",
+    "ENTERTAINMENT": "Забава",
+    "HEALTH": "Здравље",
+    "SCIENCE": "Наука",
+    "SPORTS": "Спортс",
+    "TECHNOLOGY": "Технологија"
+  }
+}

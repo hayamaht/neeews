@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Top-Schlagzeilen",
+  "CATEGORY": {
+    "GENERAL": "Allgemein",
+    "BUSINESS": "Geschäft",
+    "ENTERTAINMENT": "Unterhaltung",
+    "HEALTH": "Die Gesundheit",
+    "SCIENCE": "Wissenschaft",
+    "SPORTS": "Sport",
+    "TECHNOLOGY": "Technologie"
+  }
+}

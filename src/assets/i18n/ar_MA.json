@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Gros Titres",
+  "CATEGORY": {
+    "GENERAL": "Général",
+    "BUSINESS": "Entreprise",
+    "ENTERTAINMENT": "Divertissement",
+    "HEALTH": "Santé",
+    "SCIENCE": "Science",
+    "SPORTS": "Des sports",
+    "TECHNOLOGY": "Technologies"
+  }
+}

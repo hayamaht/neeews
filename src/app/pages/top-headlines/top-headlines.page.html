@@ -1,0 +1,76 @@
+<ngx-spinner
+  type="ball-pulse"
+  size="default"
+></ngx-spinner>
+
+<a (click)="gotoTop()"
+  class="fixed right-1 bottom-2
+  btn btn-sm btn-circle btn-primary
+  text-xs
+">
+  <svg class="w-4 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414 0zm0-6a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 5.414 5.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+</a>
+
+<div >
+  <h1 class="text-2xl text-center font-black my-4">
+    {{ 'TOP_HEADLINES' | translate }}
+  </h1>
+
+  <div class="tabs tabs-boxed justify-center rounded-none" >
+    <a class="tab tab-lg" routerLink="/top-headlines/general" routerLinkActive="tab-active">{{ 'CATEGORY.GENERAL' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/business" routerLinkActive="tab-active">{{ 'CATEGORY.BUSINESS' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/entertainment" routerLinkActive="tab-active">{{ 'CATEGORY.ENTERTAINMENT' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/health" routerLinkActive="tab-active">{{ 'CATEGORY.HEALTH' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/science" routerLinkActive="tab-active">{{ 'CATEGORY.SCIENCE' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/sports" routerLinkActive="tab-active">{{ 'CATEGORY.SPORTS' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/technology" routerLinkActive="tab-active">{{ 'CATEGORY.TECHNOLOGY' | translate }}</a>
+  </div>
+
+  <div class="
+    m-4 inline-grid gap-2
+    md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+  ">
+    <app-article
+      *ngFor="let article of articles |
+        paginate: {
+          itemsPerPage: perPage,
+          currentPage: page,
+          totalItems: total
+        }"
+      [article]="article"
+    ></app-article>
+
+  </div>
+
+  <div *ngIf="!loading" class="btn-group w-full my-4 justify-center bg-neutral">
+    <pagination-template #p="paginationApi"
+      (pageChange)="getPage($event)">
+
+      <div class="btn-group">
+        <button type="button" class="btn"
+          [class.disabled]="p.isFirstPage()"
+          *ngIf="!p.isFirstPage()"
+          (click)="p.previous()"
+        >
+          &lt;
+        </button>
+        <button type="button"
+          *ngFor="let page of p.pages"
+          (click)="p.setCurrent(page.value)"
+          class="btn"
+          [class.btn-active]="p.getCurrent() === page.value">
+          {{ page.label }}
+        </button>
+        <button type="button" class="btn"
+          [class.disabled]="p.isLastPage()"
+          *ngIf="!p.isLastPage()"
+          (click)="p.next()"
+        >
+          &gt;
+        </button>
+      </div>
+
+    </pagination-template>
+  </div>
+
+</div>

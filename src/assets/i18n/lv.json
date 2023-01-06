@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Populārākie virsraksti",
+  "CATEGORY": {
+    "GENERAL": "Ģenerālis",
+    "BUSINESS": "Bizness",
+    "ENTERTAINMENT": "Izklaide",
+    "HEALTH": "Veselība",
+    "SCIENCE": "Zinātne",
+    "SPORTS": "Sports",
+    "TECHNOLOGY": "Tehnoloģija"
+  }
+}

@@ -1,0 +1,15 @@
+- [X] Top Headline
+- [X] Image can not load
+- [X] Pagination
+- [X] Loadig progress bar
+- [X] Load Country Flag
+- [X] Click on the country name to change the news
+- [X] Scroll the country list
+- [X] Show pages on the category list
+- [X] Using RxJS on the category list
+- [X] Country **Menu** 
+- [X] Close country menu
+- [X] Lazy loading image
+- [X] Go to top button
+- [X] Using [ngx-translage](http://www.ngx-translate.com/)
+- [ ] Some countries have right to left language

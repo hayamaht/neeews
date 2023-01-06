@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Topkoppen",
+  "CATEGORY": {
+    "GENERAL": "Algemeen",
+    "BUSINESS": "Bedrijf",
+    "ENTERTAINMENT": "Vermaak",
+    "HEALTH": "Gezondheid",
+    "SCIENCE": "Wetenschap",
+    "SPORTS": "Sport",
+    "TECHNOLOGY": "Technologie"
+  }
+}
