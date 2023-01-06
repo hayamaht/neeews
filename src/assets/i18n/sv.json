@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Topp rubriker",
+  "CATEGORY": {
+    "GENERAL": "Allmän",
+    "BUSINESS": "Företag",
+    "ENTERTAINMENT": "Underhållning",
+    "HEALTH": "Hälsa",
+    "SCIENCE": "Vetenskap",
+    "SPORTS": "Sport",
+    "TECHNOLOGY": "Teknologi"
+  }
+}

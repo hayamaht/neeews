@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Лучшие заголовки",
+  "CATEGORY": {
+    "GENERAL": "Общий",
+    "BUSINESS": "Бизнес",
+    "ENTERTAINMENT": "Развлекательная программа",
+    "HEALTH": "Здоровье",
+    "SCIENCE": "Наука",
+    "SPORTS": "Спортивный",
+    "TECHNOLOGY": "Технологии"
+  }
+}

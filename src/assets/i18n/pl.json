@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Najważniejsze nagłówki",
+  "CATEGORY": {
+    "GENERAL": "Ogólny",
+    "BUSINESS": "Biznes",
+    "ENTERTAINMENT": "Rozrywka",
+    "HEALTH": "Zdrowie",
+    "SCIENCE": "Nauka",
+    "SPORTS": "Sporty",
+    "TECHNOLOGY": "Technologia"
+  }
+}

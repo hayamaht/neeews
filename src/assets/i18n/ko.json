@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "주요 헤드라인",
+  "CATEGORY": {
+    "GENERAL": "일반적인",
+    "BUSINESS": "사업",
+    "ENTERTAINMENT": "오락",
+    "HEALTH": "건강",
+    "SCIENCE": "과학",
+    "SPORTS": "스포츠",
+    "TECHNOLOGY": "기술"
+  }
+}

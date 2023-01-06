@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from '~app/models/article';
-import { NewsApiService } from '~app/serivces/news-api.service';
+import { NewsApiService } from '~app/services/news-api.service';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +11,7 @@ import { NewsApiService } from '~app/serivces/news-api.service';
 export class HomePage implements OnInit {
 
   articles: Article[] | undefined;
+  isSearch = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -19,18 +20,7 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // TODO: Usig rxjs
-    this.activatedRoute.params.subscribe(params => {
-      if (params['searchTerm']) {
-        this.newsApiService
-          .search(params['searchTerm'])
-          .subscribe(res => {
-            this.articles = res.articles;
-          });
-      } else {
-        this.router.navigateByUrl('/');
-      }
-    });
+
   }
 
 }

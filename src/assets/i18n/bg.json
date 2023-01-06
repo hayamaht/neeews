@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "Топ заглавия",
+  "CATEGORY": {
+    "GENERAL": "Общ",
+    "BUSINESS": "Бизнес",
+    "ENTERTAINMENT": "Развлечение",
+    "HEALTH": "Здраве",
+    "SCIENCE": "Наука",
+    "SPORTS": "Спорт",
+    "TECHNOLOGY": "технология"
+  }
+}

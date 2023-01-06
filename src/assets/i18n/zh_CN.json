@@ -1,0 +1,12 @@
+{
+  "TOP_HEADLINES": "头条新闻",
+  "CATEGORY": {
+    "GENERAL": "一般",
+    "BUSINESS": "商业",
+    "ENTERTAINMENT": "娱乐",
+    "HEALTH": "健康",
+    "SCIENCE": "科学",
+    "SPORTS": "运动",
+    "TECHNOLOGY": "科技"
+  }
+}
