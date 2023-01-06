@@ -104,6 +104,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "newsweb:build:production",
+            "firebaseProject": "neeews-b6e5a",
+            "firebaseHostingSite": "neeews-b6e5a"
+          }
         }
       }
     }
