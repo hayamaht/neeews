@@ -25,7 +25,10 @@ import { CountryNewsService } from '~app/services/country-news.service';
         </a>
       </div>
       <div class="navbar-end">
-        <div class="dropdown dropdown-end">
+        <div class="dropdown "
+          [class.dropdown-left]="dir === 'ltr'"
+          [class.dropdown-right]="dir === 'rtl'"
+          [dir]="currentCountry === 'ae' ? 'rtl' : 'ltr'">
 
           <label tabindex="0"
             class="
@@ -70,7 +73,7 @@ import { CountryNewsService } from '~app/services/country-news.service';
                 [searchedWord]="searchText"
                 [content]="c.name"
                 [setTitle]="true"
-                classToApply="font-black text-gray-600"
+                classToApply="font-black text-gray-600 px-[2px]"
                 class="gap-0"
               >
                 {{ c.name }}
@@ -85,6 +88,7 @@ import { CountryNewsService } from '~app/services/country-news.service';
 })
 export class NavComponent implements OnInit {
 
+  dir = '';
   searchText = '';
   currentCountry = '';
   avaliableCountries!: {name: string, code: string}[];
@@ -96,11 +100,14 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.currentCountry = this.countryNewsService.getCountryCode();
     this.avaliableCountries = this.countryNewsService.getAvaliableCountryNames();
+    this.dir = (this.currentCountry === 'ae')  ? 'rtl' : 'ltr';
   }
 
   changeCountryCode(code: string, event: Event) {
     const el = event.target as HTMLElement;
     el.blur();
+
+    this.dir = (code === 'ae')  ? 'rtl' : 'ltr';
     this.searchText = '';
     this.currentCountry = code;
     this.countryNewsService.changeCountryCode(code);

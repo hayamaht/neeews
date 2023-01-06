@@ -1,0 +1,4 @@
+.btn-group .btn:last-child:not(:first-child),
+.btn-group .btn:first-child:not(:last-child) {
+  border-radius: 9999px;
+}

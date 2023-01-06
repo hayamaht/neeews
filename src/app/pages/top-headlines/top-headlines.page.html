@@ -16,14 +16,14 @@
     {{ 'TOP_HEADLINES' | translate }}
   </h1>
 
-  <div class="tabs justify-center" >
-    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/general" routerLinkActive="tab-active">{{ 'CATEGORY.GENERAL' | translate }}</a>
-    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/business" routerLinkActive="tab-active">{{ 'CATEGORY.BUSINESS' | translate }}</a>
-    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/entertainment" routerLinkActive="tab-active">{{ 'CATEGORY.ENTERTAINMENT' | translate }}</a>
-    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/health" routerLinkActive="tab-active">{{ 'CATEGORY.HEALTH' | translate }}</a>
-    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/science" routerLinkActive="tab-active">{{ 'CATEGORY.SCIENCE' | translate }}</a>
-    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/sports" routerLinkActive="tab-active">{{ 'CATEGORY.SPORTS' | translate }}</a>
-    <a class="tab tab-lg tab-lifted" routerLink="/top-headlines/technology" routerLinkActive="tab-active">{{ 'CATEGORY.TECHNOLOGY' | translate }}</a>
+  <div class="tabs tabs-boxed justify-center rounded-none" >
+    <a class="tab tab-lg" routerLink="/top-headlines/general" routerLinkActive="tab-active">{{ 'CATEGORY.GENERAL' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/business" routerLinkActive="tab-active">{{ 'CATEGORY.BUSINESS' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/entertainment" routerLinkActive="tab-active">{{ 'CATEGORY.ENTERTAINMENT' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/health" routerLinkActive="tab-active">{{ 'CATEGORY.HEALTH' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/science" routerLinkActive="tab-active">{{ 'CATEGORY.SCIENCE' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/sports" routerLinkActive="tab-active">{{ 'CATEGORY.SPORTS' | translate }}</a>
+    <a class="tab tab-lg" routerLink="/top-headlines/technology" routerLinkActive="tab-active">{{ 'CATEGORY.TECHNOLOGY' | translate }}</a>
   </div>
 
   <div class="
@@ -42,7 +42,7 @@
 
   </div>
 
-  <div *ngIf="!loading" class="btn-group w-full my-4 justify-center">
+  <div *ngIf="!loading" class="btn-group w-full my-4 justify-center bg-neutral">
     <pagination-template #p="paginationApi"
       (pageChange)="getPage($event)">
 

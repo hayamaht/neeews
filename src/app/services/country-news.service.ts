@@ -1,9 +1,10 @@
 import { TranslateService } from '@ngx-translate/core';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { getCountryByAlpha2, getCountryNameByAlpha2, getLocaleByAlpha2 } from 'country-locale-map';
 import { CountryCodes } from '~app/models/country-codes';
 import { getBrowserLocales, getCountryCodeByLocale } from '~app/shared/countries-locale-map';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,8 @@ export class CountryNewsService {
     .filter(c => c !== undefined);
 
   constructor(
-    private translage: TranslateService
+    private translage: TranslateService,
+    @Inject(DOCUMENT) private  document: Document,
   ) { }
 
   get localCode() {
@@ -78,6 +80,7 @@ export class CountryNewsService {
   }
 
   private setLocaleByCode(code: string) {
+    let htmlTag = this.document.getElementsByTagName('html')[0] as HTMLHtmlElement;
     const locale = getLocaleByAlpha2(code.toUpperCase()) || 'en';
     const lc = code === 'tw' ||
       code === 'cn' ||
@@ -86,6 +89,8 @@ export class CountryNewsService {
       code === 'sa'
       ? locale
       : locale.substring(0, 2);
+
+    htmlTag.dir = lc === 'ar' ? 'rtl' : 'ltr';
     this.translage.use(lc);
   }
 
